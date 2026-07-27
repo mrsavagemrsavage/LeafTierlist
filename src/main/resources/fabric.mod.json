@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "leaftiertagger",
+  "version": "${version}",
+  "name": "LeafTierTagger",
+  "description": "Displays player tiers above their heads in-game",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.leaftiertagger.LeafTierTaggerClient"
+    ],
+    "main": [
+      "com.leaftiertagger.LeafTierTagger"
+    ]
+  },
+  "mixins": [
+    "leaftiertagger.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
