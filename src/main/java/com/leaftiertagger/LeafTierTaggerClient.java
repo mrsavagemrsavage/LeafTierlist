@@ -2,6 +2,7 @@ package com.leaftiertagger;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
@@ -25,19 +26,19 @@ public class LeafTierTaggerClient implements ClientModInitializer {
         
         // Register client command
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal("leaftiertagger")
+            dispatcher.register(ClientCommandManager.literal("leaftiertagger")
                 .executes(context -> {
                     // Show leaderboard menu
                     showLeaderboard(context);
                     return 1;
                 })
-                .then(net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal("update")
+                .then(ClientCommandManager.literal("update")
                     .executes(context -> {
                         updateAllPlayerTiers();
                         context.getSource().sendFeedback(Text.literal("§aUpdating all player tiers..."));
                         return 1;
                     }))
-                .then(net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal("reload")
+                .then(ClientCommandManager.literal("reload")
                     .executes(context -> {
                         playerTiers.clear();
                         updateAllPlayerTiers();

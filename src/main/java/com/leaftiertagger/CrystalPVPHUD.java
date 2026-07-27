@@ -1,6 +1,7 @@
 package com.leaftiertagger;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.text.Text;
 
 public class CrystalPVPHUD {
@@ -14,7 +15,7 @@ public class CrystalPVPHUD {
     public static boolean showTierCount = true;
     public static float hudScale = 1.0f;
 
-    public static void renderHUD(net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.DrawContext drawContext) {
+    public static void renderHUD(DrawContext drawContext) {
         if (client.player == null) return;
 
         int currentY = hudY;
@@ -59,7 +60,7 @@ public class CrystalPVPHUD {
         }
     }
 
-    private static int renderNearbyHighTiers(net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback.DrawContext drawContext, int startY, int maxPlayers) {
+    private static int renderNearbyHighTiers(DrawContext drawContext, int startY, int maxPlayers) {
         if (client.world == null) return startY;
 
         int currentY = startY;
